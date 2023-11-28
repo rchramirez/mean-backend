@@ -1,19 +1,21 @@
-process.env.TZ = 'America/Argentina/Buenos_Aires';
-const express = require('express');
-const conectarDB = require('./config/db')
+require('dotenv').config()
+const express = require('express')
+const connectDB = require('./config/db')
 const cors = require('cors')
+const PORT = process.env.PORT
 
 //Creamos el servidor
-const app = express();
+const app = express()
 
 //Conectamos a la BD
-conectarDB();
-app.use(cors());
+connectDB()
 
-app.use(express.json());
+app.use(cors())
 
-app.use('/api/productos', require('./routes/producto'));
+app.use(express.json())
 
-app.listen(4000, () => {
-    console.log('El servidor esta corriendo perfectamente')
+app.use('/api/productos', require('./routes/producto'))
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
 })
