@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const ar = 'August 20, 2021 22:31:30 GMT-03:00';
+const mongoose = require('mongoose')
 
 const ProductoSchema = mongoose.Schema({
     nombre: {
